@@ -4,9 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-// import Nav from "./components/Navbar/index";
-// import Footer from "./components/Footer/index";
-// import Jumbotron from "./components/Jumbotron/index";
+import NoMatch from "./pages/NoMatch";
+
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/home" component={Home} />
-          {/* <Route component={NoMatch} /> */}
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
