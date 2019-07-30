@@ -23,8 +23,8 @@ function AddVehicle() {
                 <input type="text" className="form-control" id="model" placeholder="Highlander"/>
               </div>
               <div className="form-group">
-                <label class="col-form-label">Mileage:</label>
-                <input type="text" class="form-control" id="model" placeholder="38,491"/>
+                <label className="col-form-label">Mileage:</label>
+                <input type="text" className="form-control" id="model" placeholder="38,491"/>
               </div>
             </form>
           </div>
