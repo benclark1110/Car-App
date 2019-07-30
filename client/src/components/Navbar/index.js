@@ -3,15 +3,27 @@ import "./style.css";
 import GoogleLogin from 'react-google-login';
 import GoogleLogout from 'react-google-login';
 import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 class Nav extends Component {
   
   state = {
     loggedIn: false,
-    givenName: "",
-    familyName: "",
-    email: "",
-    image: ""
+    givenName: "test",
+    familyName: "test",
+    email: "test",
+    image: "test"
+  };
+
+  handleFormSubmit = event => {
+      API.saveUser({
+        givenName: this.state.givenName,
+        familyName: this.state.familyName,
+        email: this.state.email,
+        image: this.state.image
+      })
+        // .then(res => this.loadBooks())
+        .catch(err => console.log(err));
   };
   
    render() {
@@ -76,7 +88,9 @@ class Nav extends Component {
                     </li>
                 </ul>
               </div>
-              <Link to={"/home"}>
+              <Link to={"/home"}
+                    onClick={this.handleFormSubmit}
+              >
                 {authButton}
               </Link>
           </nav>
