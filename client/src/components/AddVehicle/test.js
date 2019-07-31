@@ -3,6 +3,8 @@ import "./style.css";
 
 function AddVehicle() {
   return (
+    <div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
     <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
@@ -34,6 +36,7 @@ function AddVehicle() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
