@@ -5,7 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "cd client && npm start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,6 +27,7 @@
   "homepage": "https://github.com/benclark1110/Car-App#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.6.6"

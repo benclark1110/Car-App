@@ -9,20 +9,29 @@ class Nav extends Component {
   
   state = {
     loggedIn: false,
-    givenName: "test",
-    familyName: "test",
-    email: "test",
-    image: "test"
+    givenName: "",
+    familyName: "",
+    email: "",
+    image: ""
   };
 
   handleFormSubmit = event => {
+    // event.preventDefault();
       API.saveUser({
         givenName: this.state.givenName,
         familyName: this.state.familyName,
         email: this.state.email,
-        image: this.state.image
+        imageUrl: this.state.image
       })
-        // .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+  };
+
+  checkExisting = event => {
+    // event.preventDefault();
+      API.getUserByEmail({
+        email: this.state.email
+      })
+        .then(res => console.log(res.data))
         .catch(err => console.log(err));
   };
   
@@ -36,7 +45,9 @@ class Nav extends Component {
         email: response.profileObj.email,
         image: response.profileObj.imageUrl
       });
-      console.log(this.state)
+      console.log(this.state);
+      this.checkExisting();
+      // this.handleFormSubmit();
     };
 
     const logout = (response) => {
@@ -95,7 +106,7 @@ class Nav extends Component {
                 </ul>
               </div>
               <Link to={"/home"}
-                    onClick={this.handleFormSubmit}
+                    // onClick={this.handleFormSubmit}
               >
                 {authButton}
               </Link>
