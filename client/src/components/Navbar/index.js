@@ -28,8 +28,9 @@ class Nav extends Component {
 
   checkExisting = event => {
     // event.preventDefault();
-      API.getUserByEmail({
-        email: this.state.email
+      console.log(this.state.email)
+      API.getUsers({
+        // email: this.state.email
       })
         .then(res => console.log(res.data))
         .catch(err => console.log(err));

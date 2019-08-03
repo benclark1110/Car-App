@@ -16,4 +16,7 @@ export default {
   getUserByEmail: function(email) {
     return axios.get("/api/users?email=" + email);
   },
+  saveCar: function(carData) {
+    return axios.post("/api/cars", carData);
+  }
 };
