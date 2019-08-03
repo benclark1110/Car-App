@@ -50,6 +50,8 @@ class Nav extends Component {
   };
   
    render() {
+
+    
      
     const responseGoogle = (response) => {
       this.setState({
@@ -59,6 +61,7 @@ class Nav extends Component {
         email: response.profileObj.email,
         image: response.profileObj.imageUrl
       });
+      sessionStorage.setItem("email", this.state.email)
       console.log(this.state);
       this.checkExisting();
       // this.handleFormSubmit();

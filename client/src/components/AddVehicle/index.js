@@ -4,6 +4,11 @@ import API from "../../utils/API";
 
 class AddVehicle extends Component {
 
+  componentDidMount() {
+    
+    this.testThing();
+  }
+
   // constructor(props) {
   //   super(props);
   //   this.textInput = React.createRef();
@@ -22,11 +27,19 @@ class AddVehicle extends Component {
   // }
 
   state = {
-    // user: "",
+    user: "test",
     make: "test",
     model: "test",
     mileage: 0,
   };
+
+  testThing() {
+    let userEmail = sessionStorage.getItem("email")
+    this.setState({
+      user: userEmail
+    })
+    console.log(this.state);
+  }
 
   onChangeMake = (event) =>  {
     this.setState({

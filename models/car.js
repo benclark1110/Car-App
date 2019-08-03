@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const carSchema = new Schema({
   make: { type: String, required: true },
   model: { type: String, required: true },
-  mileage: { type: Number, required: true }
+  mileage: { type: Number, required: true },
+  user: { type: String, required: false }
 });
 
 const Car = mongoose.model("Car", carSchema);
