@@ -22,7 +22,7 @@ export default {
   getCars: function() {
     return axios.get("/api/cars");
   },
-  getCarsByUser: function(email) {
-    return axios.get("/api/cars?email=" + email);
+  getCarsByUser: function(user) {
+    return axios.get("/api/cars?user=" + user);
   }
 };

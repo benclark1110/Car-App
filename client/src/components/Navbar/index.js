@@ -61,7 +61,7 @@ class Nav extends Component {
         email: response.profileObj.email,
         image: response.profileObj.imageUrl
       });
-      sessionStorage.setItem("email", this.state.email)
+      sessionStorage.setItem("user", this.state.email)
       console.log(this.state);
       this.checkExisting();
       // this.handleFormSubmit();

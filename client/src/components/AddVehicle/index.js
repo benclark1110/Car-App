@@ -34,7 +34,7 @@ class AddVehicle extends Component {
   };
 
   testThing() {
-    let userEmail = sessionStorage.getItem("email")
+    let userEmail = sessionStorage.getItem("user")
     this.setState({
       user: userEmail
     })
@@ -60,23 +60,25 @@ class AddVehicle extends Component {
   }
 
   handleCarSubmit = event => {
-      event.preventDefault();
-      API.saveCar({
-        make: this.state.make,
-        model: this.state.model,
-        mileage: this.state.mileage
-      })
-        .then(this.getAllUserCars())
-        .catch(err => console.log(err));
+    this.testThing();
+    event.preventDefault();
+    API.saveCar({
+      make: this.state.make,
+      model: this.state.model,
+      mileage: this.state.mileage,
+      user: this.state.user
+    })
+      .then(this.getAllUserCars())
+      .catch(err => console.log(err));
         
   };
 
   getAllUserCars = event => {
     // event.preventDefault();
-      API.getCars({
-        // email: this.state.email
+      API.getCarsByUser({
+        user: this.state.user
       })
-      .then(req => console.log(req.data))
+      .then(req => console.log(req))
         .catch(err => console.log(err));
   };
 
