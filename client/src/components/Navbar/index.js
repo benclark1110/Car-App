@@ -6,14 +6,26 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 class Nav extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false,
+      givenName: "",
+      familyName: "",
+      email: "",
+      image: ""
+    };
+}
   
-  state = {
-    loggedIn: false,
-    givenName: "",
-    familyName: "",
-    email: "",
-    image: ""
-  };
+  // state = {
+  //   loggedIn: false,
+  //   givenName: "",
+  //   familyName: "",
+  //   email: "",
+  //   image: ""
+  // };
 
   handleFormSubmit = event => {
     // event.preventDefault();
@@ -23,6 +35,7 @@ class Nav extends Component {
         email: this.state.email,
         imageUrl: this.state.image
       })
+        .then(console.log(this.state))
         .catch(err => console.log(err));
   };
 
@@ -32,7 +45,7 @@ class Nav extends Component {
       API.getUsers({
         // email: this.state.email
       })
-        .then(res => console.log(res.data))
+      .then(console.log(this.state))
         .catch(err => console.log(err));
   };
   
