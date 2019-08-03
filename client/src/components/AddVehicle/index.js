@@ -53,7 +53,17 @@ class AddVehicle extends Component {
         model: this.state.model,
         mileage: this.state.mileage
       })
-        .then(console.log(this.state))
+        .then(this.getAllUserCars())
+        .catch(err => console.log(err));
+        
+  };
+
+  getAllUserCars = event => {
+    // event.preventDefault();
+      API.getCars({
+        // email: this.state.email
+      })
+      .then(req => console.log(req.data))
         .catch(err => console.log(err));
   };
 
@@ -67,7 +77,7 @@ class AddVehicle extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">Enter Vehicle Details Below:</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" dataDismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
@@ -107,8 +117,8 @@ class AddVehicle extends Component {
                     />
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" className="btn btn-primary">Add Vehicle</button>
+                    <button type="button" className="btn btn-secondary" dataDismiss="modal">Close</button>
+                    <button type="submit" className="btn btn-primary" dataDismiss="modal">Add Vehicle</button>
                   </div>
                 </form>
               </div>

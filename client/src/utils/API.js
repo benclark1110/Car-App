@@ -18,5 +18,8 @@ export default {
   },
   saveCar: function(carData) {
     return axios.post("/api/cars", carData);
+  },
+  getCars: function() {
+    return axios.get("/api/cars");
   }
 };
