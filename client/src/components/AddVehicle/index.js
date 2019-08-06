@@ -75,9 +75,9 @@ class AddVehicle extends Component {
 
   getAllUserCars = event => {
     // event.preventDefault();
-    API.getCarsByUser({
-      user: this.state.user
-    })
+    API.getCarsByUser(
+      this.state.user
+    )
       .then(req => console.log(req))
       .catch(err => console.log(err));
   };

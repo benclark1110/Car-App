@@ -118,9 +118,7 @@ class Nav extends Component {
               </li>
             </ul>
           </div>
-          <Link to={"/home"}
-          // onClick={this.handleFormSubmit}
-          >
+          <Link to={"/home"}>
             {authButton}
           </Link>
         </nav>
