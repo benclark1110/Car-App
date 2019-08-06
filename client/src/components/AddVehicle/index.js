@@ -5,7 +5,7 @@ import API from "../../utils/API";
 class AddVehicle extends Component {
 
   componentDidMount() {
-    
+
     this.testThing();
   }
 
@@ -41,19 +41,19 @@ class AddVehicle extends Component {
     console.log(this.state);
   }
 
-  onChangeMake = (event) =>  {
+  onChangeMake = (event) => {
     this.setState({
       make: event.target.value
     });
   }
 
-  onChangeModel = (event) =>  {
+  onChangeModel = (event) => {
     this.setState({
       model: event.target.value
     });
   }
 
-  onChangeMileage = (event) =>  {
+  onChangeMileage = (event) => {
     this.setState({
       mileage: event.target.value
     });
@@ -70,16 +70,16 @@ class AddVehicle extends Component {
     })
       .then(this.getAllUserCars())
       .catch(err => console.log(err));
-        
+
   };
 
   getAllUserCars = event => {
     // event.preventDefault();
-      API.getCarsByUser({
-        user: this.state.user
-      })
+    API.getCarsByUser({
+      user: this.state.user
+    })
       .then(req => console.log(req))
-        .catch(err => console.log(err));
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -100,10 +100,10 @@ class AddVehicle extends Component {
                 <form onSubmit={this.handleCarSubmit}>
                   <div className="form-group">
                     <label className="col-form-label">Make:</label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      id="make" 
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="make"
                       placeholder="Toyota"
                       value={this.state.make || ''}
                       onChange={this.onChangeMake}
@@ -111,10 +111,10 @@ class AddVehicle extends Component {
                   </div>
                   <div className="form-group">
                     <label className="col-form-label">Model:</label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      id="model" 
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="model"
                       placeholder="Highlander"
                       value={this.state.model || ''}
                       onChange={this.onChangeModel}
@@ -122,10 +122,10 @@ class AddVehicle extends Component {
                   </div>
                   <div className="form-group">
                     <label className="col-form-label">Mileage:</label>
-                    <input 
+                    <input
                       type="number"
-                      className="form-control" 
-                      id="mileage" 
+                      className="form-control"
+                      id="mileage"
                       placeholder="38,491"
                       value={this.state.mileage || ''}
                       onChange={this.onChangeMileage}

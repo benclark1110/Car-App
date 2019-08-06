@@ -17,8 +17,8 @@ class Nav extends Component {
       email: "",
       image: ""
     };
-}
-  
+  }
+
   // state = {
   //   loggedIn: false,
   //   givenName: "",
@@ -27,32 +27,34 @@ class Nav extends Component {
   //   image: ""
   // };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = data => {
     // event.preventDefault();
+    if (data === 0) {
       API.saveUser({
         givenName: this.state.givenName,
         familyName: this.state.familyName,
         email: this.state.email,
         imageUrl: this.state.image
       })
-        .then(console.log(this.state))
-        .catch(err => console.log(err));
+      .then(console.log("added to db"))
+      .catch(err => console.log(err));
+    } else {
+      console.log("already existing")
+    }
   };
 
-  checkExisting = event => {
+  checkExisting = () => {
     // event.preventDefault();
-      console.log(this.state.email)
-      API.getUsers({
-        // email: this.state.email
-      })
-      .then(console.log(this.state))
-        .catch(err => console.log(err));
+    console.log(this.state.email);
+    API.getUserByEmail(
+      this.state.email
+    )
+      .then(response => this.handleFormSubmit(response.data.length))
+      .catch(err => console.log(err));
   };
-  
-   render() {
 
-    
-     
+  render() {
+
     const responseGoogle = (response) => {
       this.setState({
         loggedIn: true,
@@ -80,55 +82,49 @@ class Nav extends Component {
     };
 
     let authButton;
-      if (!this.state.loggedIn) {
-        authButton = <GoogleLogin
+    if (!this.state.loggedIn) {
+      authButton = <GoogleLogin
         clientId="321790988998-dd7ojo9jl0oaqn9nhltn85g798gv53ve.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
       />
-      } else {
-        authButton = <GoogleLogout
+    } else {
+      authButton = <GoogleLogout
         buttonText="Logout"
         onLogoutSuccess={logout}
       >
-      </GoogleLogout>
-      };
+      </GoogleLogout>;
+    };
+
 
     return (
       <div>
-          <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-              <a className="navbar-brand">Fixed navbar</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarCollapse">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                      <a className="nav-link">
-                        <Link to="/">Login</Link>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link">
-                        <Link to="/home">Home</Link>
-                      </a>
-                    </li>
-                    <li className="nav-item active">
-                      <a className="nav-link">
-                        <Link to="/mycars">My Cars</Link>
-                      </a>
-                    </li>
-                </ul>
-              </div>
-              <Link to={"/home"}
-                    // onClick={this.handleFormSubmit}
-              >
-                {authButton}
-              </Link>
-          </nav>
-        </div>
+        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                  <Link className="nav-link" to="/">Login</Link>
+              </li>
+              <li className="nav-item">
+                  <Link className="nav-link" to="/home">Home</Link>
+              </li>
+              <li className="nav-item">
+                  <Link className="nav-link" to="/mycars">My Cars</Link>
+              </li>
+            </ul>
+          </div>
+          <Link to={"/home"}
+          // onClick={this.handleFormSubmit}
+          >
+            {authButton}
+          </Link>
+        </nav>
+      </div>
     );
   }
 }
