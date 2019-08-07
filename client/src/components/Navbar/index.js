@@ -82,6 +82,7 @@ class Nav extends Component {
     };
 
     let authButton;
+    let pageLinks;
     if (!this.state.loggedIn) {
       authButton = <GoogleLogin
         clientId="321790988998-dd7ojo9jl0oaqn9nhltn85g798gv53ve.apps.googleusercontent.com"
@@ -89,13 +90,25 @@ class Nav extends Component {
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
-      />
+        />
+
     } else {
       authButton = <GoogleLogout
         buttonText="Logout"
         onLogoutSuccess={logout}
       >
       </GoogleLogout>;
+      pageLinks = <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/home">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/mycars">My Cars</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/carhelp">Car Help</Link>
+                    </li>
+                  </ul>
     };
 
 
@@ -106,17 +119,7 @@ class Nav extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                  <Link className="nav-link" to="/">Login</Link>
-              </li>
-              <li className="nav-item">
-                  <Link className="nav-link" to="/home">Home</Link>
-              </li>
-              <li className="nav-item">
-                  <Link className="nav-link" to="/mycars">My Cars</Link>
-              </li>
-            </ul>
+            {pageLinks}
           </div>
           <Link to={"/home"}>
             {authButton}

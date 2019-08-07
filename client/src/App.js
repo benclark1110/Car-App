@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import logo from './logo.svg';
 import './App.css';
-import Login from "./pages/Login/Login";
+import CarHelp from "./pages/CarHelp/CarHelp";
 import Home from "./pages/Home/Home";
 import MyCars from "./pages/MyCars/MyCars";
 import NoMatch from "./pages/NoMatch";
@@ -17,9 +17,10 @@ function App() {
         <Nav />
         <div>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/mycars" component={MyCars} />
+            <Route exact path="/carhelp" component={CarHelp} />
             <Route component={NoMatch} />
           </Switch>
         </div>
