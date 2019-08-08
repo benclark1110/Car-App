@@ -9,23 +9,6 @@ class AddVehicle extends Component {
     this.testThing();
   }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.textInput = React.createRef();
-
-  //   this.onChangeMake = this.onChangeMake.bind(this);
-  //   this.onChangeModel = this.onChangeModel.bind(this);
-  //   this.onChangeMileage = this.onChangeMileage.bind(this);
-  //   this.handleCarSubmit = this.handleCarSubmit.bind(this);
-
-  //   this.state = {
-  //     // user: "",
-  //     make: "test",
-  //     model: "test",
-  //     mileage: 0,
-  //   };
-  // }
-
   state = {
     user: "test",
     make: "test",
