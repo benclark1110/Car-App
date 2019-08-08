@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CarServices from "../../components/CarServices/index";
 import "./carHelp.css";
 
 class CarHelp extends Component {
@@ -8,6 +9,7 @@ class CarHelp extends Component {
         <div className="carHelpPage">
           <h1>Welcome to Car Help!</h1>
           <h2>Find auto assistance near you.</h2>
+          <CarServices />
         </div>
       );
     }

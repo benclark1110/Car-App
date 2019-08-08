@@ -39,25 +39,12 @@ class AddVehicle extends Component {
       user: userEmail
     })
     console.log(this.state);
-  }
+  };
 
-  onChangeMake = (event) => {
-    this.setState({
-      make: event.target.value
-    });
-  }
-
-  onChangeModel = (event) => {
-    this.setState({
-      model: event.target.value
-    });
-  }
-
-  onChangeMileage = (event) => {
-    this.setState({
-      mileage: event.target.value
-    });
-  }
+  handleChange = (event) => {
+    const { target: { name, value } } = event
+    this.setState({ [name]: value })
+  };
 
   handleCarSubmit = event => {
     this.testThing();
@@ -104,9 +91,10 @@ class AddVehicle extends Component {
                       type="text"
                       className="form-control"
                       id="make"
+                      name="make"
                       placeholder="Toyota"
                       value={this.state.make || ''}
-                      onChange={this.onChangeMake}
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div className="form-group">
@@ -115,9 +103,10 @@ class AddVehicle extends Component {
                       type="text"
                       className="form-control"
                       id="model"
+                      name="model"
                       placeholder="Highlander"
                       value={this.state.model || ''}
-                      onChange={this.onChangeModel}
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div className="form-group">
@@ -126,9 +115,10 @@ class AddVehicle extends Component {
                       type="number"
                       className="form-control"
                       id="mileage"
+                      name="mileage"
                       placeholder="38,491"
                       value={this.state.mileage || ''}
-                      onChange={this.onChangeMileage}
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div className="modal-footer">
