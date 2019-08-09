@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./listStyle.css";
 
 // This file exports both the List and ListItem components
 
@@ -16,5 +16,7 @@ export function ListItem({ children }) {
 }
 
 export function ResItem({ children }) {
-  return <li>{children}</li>;
+  return <ul>
+          <li>{children}</li>
+        </ul>;
 }

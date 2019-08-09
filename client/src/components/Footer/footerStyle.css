@@ -5,4 +5,10 @@
     height: 60px;
     line-height: 60px;
     background-color: #f5f5f5;
+    text-align: center;
+}
+
+.footer ul{
+    list-style-type: none;
+    margin-bottom: 0;
 }

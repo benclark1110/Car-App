@@ -125,7 +125,7 @@ class AddVehicle extends Component {
                 </ResItem>
               ))
             ) : (
-              <h6>Search results will go here..</h6>
+              <h6>Cars will appear here!</h6>
             )}
       </div>
     );

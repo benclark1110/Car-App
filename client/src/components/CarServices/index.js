@@ -66,6 +66,7 @@ class CarServices extends Component {
             value={this.state.zipCode || ''}
             onChange={this.onChangeZipCode}
             />
+            <br />
             <label className="col-form-label">What service are you looking for?</label>
             <button type="submit" 
                     className="btn btn-primary" 
@@ -88,6 +89,20 @@ class CarServices extends Component {
                     name="carbattery"
                     onClick={this.handleChange}>Car Battery
             </button>
+            <button type="submit" 
+                    className="btn btn-primary"
+                    value={this.state.service}
+                    id="airfilter"
+                    name="airfilter"
+                    onClick={this.handleChange}>Air Filter
+            </button>
+            <button type="submit" 
+                    className="btn btn-primary"
+                    value={this.state.service}
+                    id="brakes"
+                    name="brakes"
+                    onClick={this.handleChange}>Brakes
+            </button>
             {this.state.searchResults.data ? (
               this.state.searchResults.data.businesses.map(store => (
                 <ResItem key={store.id}>
@@ -95,7 +110,10 @@ class CarServices extends Component {
                 </ResItem>
               ))
             ) : (
-              <h6>Search results will go here..</h6>
+              <div>
+                <br />
+                <h6>Search for services!</h6>
+              </div>
             )}
         </div>
       );
