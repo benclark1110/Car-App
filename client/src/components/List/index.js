@@ -15,6 +15,6 @@ export function ListItem({ children }) {
   return <li className="list-group-item">{children}</li>;
 }
 
-export function resItem({ children }) {
+export function ResItem({ children }) {
   return <li>{children}</li>;
 }

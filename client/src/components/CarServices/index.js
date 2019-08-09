@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./carServices.css";
-import { List, ListItem, resItem } from "../List/index";
+import { ResItem } from "../List/index";
 const axios = require("axios");
 
 
@@ -88,30 +88,15 @@ class CarServices extends Component {
                     name="carbattery"
                     onClick={this.handleChange}>Car Battery
             </button>
-            {/* {this.state.searchResults.length ? (
-              <List>
-                {this.state.searchResults.map(result => (
-                  <ListItem key={result._id}>
-                    <Link to={"/books/" + result._id}>
-                      <strong>
-                        {result.title} by {result.authors}
-                      </strong>
-                    </Link>
-                  </ListItem>
-                ))}
-              </List>
-              ) : (
-                <h3>No Results to Display</h3>
-              )} */}
-              {this.state.searchResults.data ? (
-                this.state.searchResults.data.businesses.map(store => (
-                  <resItem key={store.id}>
-                    <h6>{store.name} Call at: {store.display_phone}</h6>
-                  </resItem>
-                ))
-              ) : (
-                <h6>Search results will go here..</h6>
-              )}
+            {this.state.searchResults.data ? (
+              this.state.searchResults.data.businesses.map(store => (
+                <ResItem key={store.id}>
+                  <h6>{store.name} Call at: {store.display_phone}</h6>
+                </ResItem>
+              ))
+            ) : (
+              <h6>Search results will go here..</h6>
+            )}
         </div>
       );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import { ResItem } from "../List/index";
 import API from "../../utils/API";
 
 class AddVehicle extends Component {
@@ -14,6 +15,7 @@ class AddVehicle extends Component {
     make: "test",
     model: "test",
     mileage: 0,
+    carResults: []
   };
 
   testThing() {
@@ -48,21 +50,24 @@ class AddVehicle extends Component {
     API.getCarsByUser(
       this.state.user
     )
-      .then(req => console.log(req))
-      .catch(err => console.log(err));
+    .then(res => {
+      this.setState({ carResults: res });
+      console.log(this.state.carResults);
+    })
+    .catch(err => console.log(err))
   };
 
   render() {
 
     return (
       <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add a Vehicle!</button>
-        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add a Vehicle!</button>
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">Enter Vehicle Details Below:</h5>
-                <button type="button" class="close" dataDismiss="modal" aria-label="Close">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
@@ -105,14 +110,23 @@ class AddVehicle extends Component {
                     />
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" dataDismiss="modal">Close</button>
-                    <button type="submit" className="btn btn-primary" dataDismiss="modal">Add Vehicle</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" className="btn btn-primary" data-dismiss="modal">Add Vehicle</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
+        {this.state.carResults.data ? (
+              this.state.carResults.data.map(car => (
+                <ResItem key={car._id}>
+                  <h6>{car._id} Call at: {car.mileage}</h6>
+                </ResItem>
+              ))
+            ) : (
+              <h6>Search results will go here..</h6>
+            )}
       </div>
     );
   }
