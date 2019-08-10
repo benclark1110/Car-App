@@ -122,7 +122,10 @@ class AddVehicle extends Component {
         {this.state.carResults.data ? (
               this.state.carResults.data.map(car => (
                 <ResItem key={car._id}>
-                  <h6>{car._id} Call at: {car.mileage}</h6>
+                  <h5>ID: {car._id}</h5>
+                  <h6>Make: {car.make}</h6>
+                  <h6>Model: {car.model}</h6>
+                  <h6>Mileage: {car.mileage}</h6>
                 </ResItem>
               ))
             ) : (

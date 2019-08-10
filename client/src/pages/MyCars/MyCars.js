@@ -8,7 +8,8 @@ class Home extends Component {
     render() {
       return (
         <div className="myCarsPage">
-          <Jumbotron />
+          <h1>Keep track of your vehicles!</h1>
+          <h2>Add your vehicle information below</h2>
           <AddVehicle />
         </div>
       );
