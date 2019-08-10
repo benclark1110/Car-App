@@ -11,10 +11,13 @@ class AddVehicle extends Component {
   }
 
   state = {
-    user: "test",
-    make: "test",
-    model: "test",
+    user: "",
+    make: "",
+    model: "",
     mileage: 0,
+    lastOilChange: "",
+    lastTireRotation: "",
+    lastNewBrake: "",
     carResults: []
   };
 
@@ -39,6 +42,9 @@ class AddVehicle extends Component {
       make: this.state.make,
       model: this.state.model,
       mileage: this.state.mileage,
+      lastOilChange: this.state.mileage,
+      lastTireRotation: this.state.mileage,
+      lastNewBrake: this.state.mileage,
       user: this.state.user
     })
       .then(this.getAllUserCars())
@@ -81,7 +87,7 @@ class AddVehicle extends Component {
                       className="form-control"
                       id="make"
                       name="make"
-                      placeholder="Toyota"
+                      placeholder="Make"
                       value={this.state.make || ''}
                       onChange={this.handleChange}
                     />
@@ -93,7 +99,7 @@ class AddVehicle extends Component {
                       className="form-control"
                       id="model"
                       name="model"
-                      placeholder="Highlander"
+                      placeholder="Model"
                       value={this.state.model || ''}
                       onChange={this.handleChange}
                     />
@@ -105,8 +111,44 @@ class AddVehicle extends Component {
                       className="form-control"
                       id="mileage"
                       name="mileage"
-                      placeholder="38,491"
+                      placeholder="Total Mileage"
                       value={this.state.mileage || ''}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label">Last Oil Change:</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="lastOilChange"
+                      name="lastOilChange"
+                      placeholder="Last Oil Change (mileage)"
+                      value={this.state.lastOilChange || ''}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label">Last Tire Rotation:</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="lastTireRotation"
+                      name="lastTireRotation"
+                      placeholder="Last Tire Rotation (mileage)"
+                      value={this.state.lastTireRotation || ''}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label">Last Brake Replacement:</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="lastNewBrake"
+                      name="lastNewBrake"
+                      placeholder="Last Brake Replacement (mileage)"
+                      value={this.state.lastNewBrake || ''}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -126,6 +168,9 @@ class AddVehicle extends Component {
                   <h6>Make: {car.make}</h6>
                   <h6>Model: {car.model}</h6>
                   <h6>Mileage: {car.mileage}</h6>
+                  <h6>Last Oil Change: {car.lastOilChange}</h6>
+                  <h6>Last Tire Rotation: {car.lastTireRotation}</h6>
+                  <h6>Last New Brake: {car.lastNewBrake}</h6>
                 </ResItem>
               ))
             ) : (
