@@ -106,7 +106,7 @@ class CarServices extends Component {
             {this.state.searchResults.data ? (
               this.state.searchResults.data.businesses.map(store => (
                 <ResItem key={store.id}>
-                  <h6>{store.name} Call at: {store.display_phone}</h6>
+                  <h6>{store.name} : {store.display_phone}</h6>
                 </ResItem>
               ))
             ) : (

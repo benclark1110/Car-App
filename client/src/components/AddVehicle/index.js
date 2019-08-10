@@ -12,12 +12,13 @@ class AddVehicle extends Component {
 
   state = {
     user: "",
+    carName: "",
     make: "",
     model: "",
     mileage: 0,
-    lastOilChange: "",
-    lastTireRotation: "",
-    lastNewBrake: "",
+    lastOilChange: 0,
+    lastTireRotation: 0,
+    lastNewBrake: 0,
     carResults: []
   };
 
@@ -39,6 +40,7 @@ class AddVehicle extends Component {
     this.testThing();
     event.preventDefault();
     API.saveCar({
+      carName: this.state.carName,
       make: this.state.make,
       model: this.state.model,
       mileage: this.state.mileage,
@@ -80,6 +82,18 @@ class AddVehicle extends Component {
               </div>
               <div className="modal-body">
                 <form onSubmit={this.handleCarSubmit}>
+                <div className="form-group">
+                    <label className="col-form-label">Name:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="carName"
+                      name="carName"
+                      placeholder="Give your car a name!"
+                      value={this.state.carName || ''}
+                      onChange={this.handleChange}
+                    />
+                  </div>
                   <div className="form-group">
                     <label className="col-form-label">Make:</label>
                     <input
@@ -164,7 +178,7 @@ class AddVehicle extends Component {
         {this.state.carResults.data ? (
               this.state.carResults.data.map(car => (
                 <ResItem key={car._id}>
-                  <h5>ID: {car._id}</h5>
+                  <h5>Name: {car.carName}</h5>
                   <h6>Make: {car.make}</h6>
                   <h6>Model: {car.model}</h6>
                   <h6>Mileage: {car.mileage}</h6>
